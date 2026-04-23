@@ -16,27 +16,27 @@ export class UsersController {
     constructor(private readonly service: UsersService) {}
 
     @Post()
-    create(@Body() dto: CreateUserDto) {
+    async create(@Body() dto: CreateUserDto) {
         return this.service.create(dto);
     }
 
     @Get()
-    getAllUsers() {
+    async getAllUsers() {
         return this.service.getAllUsers();
     }
 
     @Get(':id')
-    getSpecificUser(@Param('id') id: string) {
-        return this.service.getSpecificUser(+id);
+    async getSpecificUser(@Param('id') id: string) {
+        return this.service.getSpecificUser(id);
     }
 
     @Delete(':id')
-    delete(@Param('id') id: string) {
-        return this.service.delete(+id);
+    async delete(@Param('id') id: string) {
+        return this.service.delete(id);
     }
 
     @Patch(':id')
-    update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
-        return this.service.update(+id, dto);
+    async update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
+        return this.service.update(id, dto);
     }
 }
